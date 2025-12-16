@@ -89,7 +89,7 @@ resource "aws_instance" "kube-master" {
   instance_type = "t3a.medium"
   iam_instance_profile = aws_iam_instance_profile.petclinic-master-server-profile.name
   vpc_security_group_ids = [aws_security_group.k8s-sec-gr.id]
-  key_name = "my-key-pair" # will be auto generated each time
+  key_name = "my-key" # will be auto generated each time
   subnet_id = "subnet-040d2ae7a98b97f91"  # select own subnet_id of us-east-1a
   availability_zone = "us-east-1a"
   tags = {

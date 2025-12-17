@@ -6,7 +6,7 @@ pipeline {
         AWS_ACCOUNT_ID=sh(script:'aws sts get-caller-identity --query Account --output text', returnStdout:true).trim()
         AWS_REGION="us-east-1"
         ECR_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
-        ANS_KEYPAIR="petclinic-${APP_NAME}-dev-${BUILD_NUMBER}.key"
+        ANS_KEYPAIR="petclinic-${APP_NAME}-dev-${BUILD_NUMBER}"
         ANSIBLE_PRIVATE_KEY_FILE="${WORKSPACE}/${ANS_KEYPAIR}"
         ANSIBLE_HOST_KEY_CHECKING="False"
     }
@@ -81,7 +81,7 @@ pipeline {
                 echo 'Creating QA Automation Infrastructure for Dev Environment'
                 sh """
                     cd infrastructure/dev-k8s-terraform
-                    sed -i "s/clarus/$ANS_KEYPAIR/g" main.tf
+                    sed -i "s/myKey/${ANS_KEYPAIR}/g" main.tf
                     terraform init
                     terraform apply -auto-approve -no-color
                 """

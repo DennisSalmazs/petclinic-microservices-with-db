@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Build App Docker Images') {
             steps {
-                echo 'Building App Dev Images'
+                echo 'Building App QA Images'
                 sh ". ./jenkins/build-qa-docker-images-for-ecr.sh"
                 sh 'docker image ls'
             }

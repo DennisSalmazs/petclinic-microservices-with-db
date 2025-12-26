@@ -1,0 +1,6 @@
+mykey = "petclinic-rancher"
+ami = "ami-0341d95f75f311023"
+region = "us-east-1"
+instance_type = "t3a.medium"
+nexus_server_secgr = "petclinic-nexus-server-secgr"
+nexus-server-tag = "Nexus Server of Petclinic"
